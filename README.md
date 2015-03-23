@@ -25,36 +25,35 @@ For this script, I assume that the system in question has the ability to email t
 
 1. Open the 'ad-account-emailer.ps1' script and check all the variables, specifically these:
 
-    $sendermailaddress = "no-reply@ "            
-    $adminmailaddress = "SET THIS"
-    $domain_name = "SET THIS"
-    $SMTPserver = "SET THIS"           
-    $DN = "DC=yourdomain,DC=com"
-    $mailSubject = "Your DOMAIN_NAME AD password is about to expire!"
+        $sendermailaddress = "no-reply@ "            
+        $adminmailaddress = "SET THIS"
+        $domain_name = "SET THIS"
+        $SMTPserver = "SET THIS"           
+        $DN = "DC=yourdomain,DC=com"
+        $mailSubject = "Your DOMAIN_NAME AD password is about to expire!"
 
 2. Open 'support_scripts\exceptions.txt' and add any accounts that would be exempt from these emails (eg, service accounts):
 
-    service_account1
-	service_account2 
-	super_special_account
+        service_account1
+	    service_account2 
+	    super_special_account
 
-This list is loaded by this line in the script: 
+    This list is loaded by this line in the script: 
 
-    $exceptionList = Get-Content support_scripts\exceptions.txt
+        $exceptionList = Get-Content support_scripts\exceptions.txt
 
-and it is important to make sure it is accurate.
+    and it is important to make sure it is accurate.
 
 3. Edit the 'support_scripts\TEMPLATE_EMAIL.html' file to verify the message you want to send to your users.
 
-Pay close attention to these lines in particular:
+    Pay close attention to these lines in particular:
 
-    <p>The following applications use this account:
-        <ul>
-            <li>Application 1</li>
-            <li>Application 2</li>
-            <li>Application 3</li>
-        </ul>
-    </p>
+        <p>The following applications use this account:
+            <ul>
+                <li>Application 1</li>
+                <li>Application 2</li>
+                <li>Application 3</li>
+            </ul>
+        </p>
 
-It would be a good idea to stress to the user which applications they will lose if they do not obey the admin.
-
+    It would be a good idea to stress to the user which applications they will lose if they do not obey the admin.
